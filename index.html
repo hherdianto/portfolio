@@ -1,5 +1,356 @@
-<html>
-    <body>
-        <h1>Hleo wlrdo</h1>
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Herry Herdianto - Technology Leader, Fractional CTO, and hands-on Full-Stack &amp; AI Systems Engineer.">
+  <meta name="theme-color" content="#09111f">
+  <title>Herry Herdianto | Technology Leader & Fractional CTO</title>
+  <style>
+    :root {
+      --ink: #0b1220;
+      --muted: #526174;
+      --paper: #f7f9fc;
+      --white: #fff;
+      --line: #dce3ec;
+      --blue: #2563eb;
+      --blue-2: #0ea5e9;
+      --teal: #0f766e;
+      --navy: #09111f;
+      --navy-2: #12223d;
+      --amber: #f59e0b;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(9,17,31,.88);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { color: #fff; font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    .brand span { color: #65d4ff; }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+    .nav-links a { color: #c9d6e7; text-decoration: none; font-size: 14px; font-weight: 650; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { padding: 10px 15px; border: 1px solid #59708e; border-radius: 999px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(14,165,233,.28), transparent 28%),
+        radial-gradient(circle at 12% 85%, rgba(37,99,235,.24), transparent 30%),
+        linear-gradient(135deg, var(--navy), var(--navy-2));
+      padding: 94px 0 84px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .16;
+      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr .75fr; gap: 64px; align-items: center; }
+    .eyebrow { margin: 0 0 18px; color: #7dd3fc; font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 850px; font-size: clamp(46px, 6.2vw, 78px); line-height: .99; letter-spacing: -.055em; }
+    .hero-lead { max-width: 720px; margin: 28px 0 0; color: #c9d6e7; font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 19px; border-radius: 999px; font-size: 14px; font-weight: 800; text-decoration: none; transition: .2s ease; }
+    .button-primary { background: #fff; color: var(--navy); }
+    .button-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.2); }
+    .button-secondary { color: #fff; border: 1px solid #60738e; background: rgba(255,255,255,.04); }
+    .button-secondary:hover { border-color: #fff; }
+    .hero-panel { border: 1px solid rgba(255,255,255,.14); border-radius: 28px; padding: 26px; background: rgba(255,255,255,.06); box-shadow: 0 32px 80px rgba(0,0,0,.25); }
+    .hero-panel-label { color: #92a7c1; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .hero-panel h2 { margin: 8px 0 20px; font-size: 24px; line-height: 1.25; }
+    .signal { display: grid; grid-template-columns: 44px 1fr; gap: 13px; padding: 15px 0; border-top: 1px solid rgba(255,255,255,.11); }
+    .signal-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: rgba(56,189,248,.14); color: #7dd3fc; font-size: 19px; }
+    .signal strong { display: block; font-size: 14px; }
+    .signal span { display: block; color: #9fb0c5; font-size: 13px; }
+
+    .metrics { position: relative; z-index: 3; margin-top: -34px; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow); }
+    .metric { padding: 26px 25px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric strong { display: block; color: var(--blue); font-size: 30px; line-height: 1.05; letter-spacing: -.04em; }
+    .metric span { color: var(--muted); font-size: 13px; }
+
+    section { padding: 100px 0; }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 54px; align-items: end; margin-bottom: 48px; }
+    .kicker { color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    h2.section-title { margin: 8px 0 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.045em; }
+    .section-intro { margin: 0; color: var(--muted); font-size: 18px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: 0 12px 40px rgba(15,23,42,.05); }
+    .story { padding: 36px; }
+    .story p { margin: 0 0 18px; color: #334155; font-size: 18px; }
+    .story p:last-child { margin-bottom: 0; }
+    .positioning { padding: 36px; color: #fff; background: linear-gradient(145deg, #15345f, #0f766e); }
+    .positioning h3 { margin: 8px 0 12px; font-size: 31px; line-height: 1.12; letter-spacing: -.035em; }
+    .positioning p { color: #d8f1ee; margin: 0; }
+
+    .projects { background: #eef3f9; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .project { overflow: hidden; }
+    .project-media { aspect-ratio: 16/9; overflow: hidden; background: #d8e2ee; }
+    .project-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .project:hover .project-media img { transform: scale(1.025); }
+    .project-copy { padding: 28px; }
+    .project-top { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+    .project h3 { margin: 0; font-size: 28px; letter-spacing: -.035em; }
+    .role { color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .project p { margin: 12px 0 18px; color: var(--muted); }
+    .proof { padding: 13px 15px; border-radius: 14px; background: #f0f6ff; color: #173b73; font-size: 14px; font-weight: 750; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: #475569; background: #fff; font-size: 12px; font-weight: 700; }
+
+    .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .expertise-card { padding: 26px; }
+    .expertise-card .num { color: #94a3b8; font-size: 12px; font-weight: 800; }
+    .expertise-card h3 { margin: 20px 0 8px; font-size: 21px; }
+    .expertise-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .stack { margin-top: 36px; padding: 30px; }
+    .stack h3 { margin: 0 0 20px; font-size: 18px; }
+    .stack-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .stack-list span { padding: 9px 13px; border-radius: 10px; background: #eef4fb; color: #29415f; font-size: 13px; font-weight: 750; }
+
+    .journey { color: #fff; background: var(--navy); }
+    .journey .section-intro { color: #a9b8cb; }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .timeline-item { padding: 25px; border: 1px solid #243654; border-radius: 18px; background: #101d31; }
+    .timeline-item .date { color: #7dd3fc; font-size: 12px; font-weight: 800; }
+    .timeline-item h3 { margin: 10px 0 5px; font-size: 18px; }
+    .timeline-item p { margin: 0; color: #9fb0c5; font-size: 13px; }
+
+    .cta-box { display: grid; grid-template-columns: 1.25fr .75fr; gap: 30px; align-items: center; padding: 52px; border-radius: 28px; color: #fff; background: linear-gradient(135deg, #1d4ed8, #0f766e); box-shadow: var(--shadow); }
+    .cta-box h2 { margin: 0 0 12px; font-size: clamp(34px, 4vw, 50px); line-height: 1.06; letter-spacing: -.045em; }
+    .cta-box p { margin: 0; color: #dcebf6; font-size: 17px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 10px; }
+    .cta-actions .button { width: 100%; }
+
+    footer { padding: 38px 0; color: #708096; font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 25px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-grid, .section-head, .about-grid, .cta-box { grid-template-columns: 1fr; }
+      .hero-grid { gap: 40px; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .project-grid { grid-template-columns: 1fr; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(1160px, calc(100% - 26px)); }
+      .hero { padding-top: 70px; }
+      section { padding: 74px 0; }
+      .metrics-grid, .expertise-grid, .timeline { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .story, .positioning, .project-copy { padding: 24px; }
+      .cta-box { padding: 30px 24px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Herry<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Selected work</a>
+        <a href="#expertise">Expertise</a>
+        <a class="nav-cta" href="mailto:hherdianto@gmail.com">Start a conversation</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Technology leadership that stays hands-on</p>
+        <h1>I turn complex business needs into scalable digital products.</h1>
+        <p class="hero-lead">I'm Herry Herdianto, a technology leader, Fractional CTO, and Full-Stack &amp; AI Systems Engineer with 20+ years of experience across architecture, product delivery, and engineering leadership.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">&#8595;</span></a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/hherdianto/" rel="noreferrer">View LinkedIn</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Consulting focus">
+        <div class="hero-panel-label">Consulting focus</div>
+        <h2>Architecture + Product + Execution</h2>
+        <div class="signal"><div class="signal-icon" aria-hidden="true">&#9672;</div><div><strong>Fractional CTO Advisory</strong><span>Clear technical direction without full-time overhead.</span></div></div>
+        <div class="signal"><div class="signal-icon" aria-hidden="true">&#9651;</div><div><strong>MVP & Product Delivery</strong><span>Focused scope, pragmatic choices, faster launches.</span></div></div>
+        <div class="signal"><div class="signal-icon" aria-hidden="true">&#8644;</div><div><strong>Scalable Architecture</strong><span>Reliable systems designed for sustainable growth.</span></div></div>
+      </aside>
+    </div>
+  </header>
+
+  <div class="metrics">
+    <div class="wrap metrics-grid">
+      <div class="metric"><strong>20+</strong><span>years in software and technology</span></div>
+      <div class="metric"><strong>2 months</strong><span>RVARE MVP delivery</span></div>
+      <div class="metric"><strong>6 weeks</strong><span>Petruck launch plan</span></div>
+      <div class="metric"><strong>~60%</strong><span>better Mebiso analysis accuracy</span></div>
+    </div>
+  </div>
+
+  <main>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Profile</span><h2 class="section-title">Strategy informed by real engineering work.</h2></div>
+          <p class="section-intro">I work across the full technology lifecycle: clarifying what should be built, shaping the architecture, guiding the team, and contributing hands-on when the product needs it.</p>
+        </div>
+        <div class="about-grid">
+          <article class="card story">
+            <p>My background spans AI platforms, logistics, e-commerce, brand intelligence, finance, and enterprise systems. That range helps me separate durable engineering principles from trends and choose technology based on the problem, team, and business objective.</p>
+            <p>I am most useful when a team needs to turn ambiguity into a focused product plan, improve a system that is becoming difficult to scale, or align engineering decisions with a faster and more reliable path to market.</p>
+          </article>
+          <aside class="card positioning">
+            <span class="kicker" style="color:#99f6e4">Positioning</span>
+            <h3>Fractional CTO & Technology Advisor</h3>
+            <p>For founders and growing teams that need senior technology judgment, pragmatic architecture, and accountable execution.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Selected work</span><h2 class="section-title">Four platforms. Four business problems.</h2></div>
+          <p class="section-intro">Each case study connects product context, technical leadership, and a concrete outcome—not just a list of technologies.</p>
+        </div>
+        <div class="project-grid">
+          <article class="card project">
+            <div class="project-media"><img src="assets/rvare.png" alt="RVARE dashboard showing sentiment, engagement, and source analytics" loading="lazy"></div>
+            <div class="project-copy">
+              <div class="project-top"><div><span class="role">Chief Technology Officer</span><h3>RVARE</h3></div></div>
+              <p>AI-powered crisis and reputation intelligence that consolidates volume, engagement, source, and sentiment signals into decision-ready analysis.</p>
+              <div class="proof">Delivered the initial MVP in two months while establishing a modular foundation for new sources and analyses.</div>
+              <div class="tags"><span class="tag">React</span><span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">AI analytics</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-media"><img src="assets/petruck.png" alt="Petruck logistics dashboard showing profitability and operational performance" loading="lazy"></div>
+            <div class="project-copy">
+              <div class="project-top"><div><span class="role">Technology Consultant</span><h3>Petruck.id</h3></div></div>
+              <p>Operational intelligence for logistics teams, bringing trip economics, fleet utilization, capacity, and exceptions into one workflow.</p>
+              <div class="proof">Redesigned delivery priorities and reduced the projected time-to-market from three months to six weeks.</div>
+              <div class="tags"><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Solution architecture</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-media"><img src="assets/mebiso.png" alt="Mebiso dashboard for AI-assisted brand analysis and monitoring" loading="lazy"></div>
+            <div class="project-copy">
+              <div class="project-top"><div><span class="role">Chief Technology Officer</span><h3>Mebiso</h3></div></div>
+              <p>A digital platform that makes complex brand analysis, monitoring, and image-protection services understandable and actionable.</p>
+              <div class="proof">Cut data retrieval from nearly nine seconds to tens of milliseconds and improved analysis accuracy by approximately 60%.</div>
+              <div class="tags"><span class="tag">Laravel</span><span class="tag">Elasticsearch</span><span class="tag">ELK Stack</span><span class="tag">Microservices</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-media"><img src="assets/fni.png" alt="FNI administrative dashboard with transaction and activity reporting" loading="lazy"></div>
+            <div class="project-copy">
+              <div class="project-top"><div><span class="role">Technology Lead</span><h3>FNI</h3></div></div>
+              <p>A commerce and membership platform connecting products, orders, registrations, transactions, withdrawals, bonuses, rewards, and reporting.</p>
+              <div class="proof">Led full-stack delivery and product R&amp;D with high-availability and scalability requirements built into the platform direction.</div>
+              <div class="tags"><span class="tag">Full-stack</span><span class="tag">Reporting</span><span class="tag">Product R&amp;D</span><span class="tag">High availability</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">How I can help</span><h2 class="section-title">Focused support for important technology decisions.</h2></div>
+          <p class="section-intro">Engagements can be a focused review, an MVP planning sprint, or ongoing technology leadership.</p>
+        </div>
+        <div class="expertise-grid">
+          <article class="card expertise-card"><span class="num">01</span><h3>Architecture Review</h3><p>Evaluate system boundaries, data flows, bottlenecks, reliability risks, and pragmatic improvement priorities.</p></article>
+          <article class="card expertise-card"><span class="num">02</span><h3>MVP Planning</h3><p>Turn a business idea into a focused release scope, delivery sequence, system design, and technology plan.</p></article>
+          <article class="card expertise-card"><span class="num">03</span><h3>Fractional CTO Advisory</h3><p>Provide ongoing technical direction and decision support without the overhead of a full-time executive role.</p></article>
+          <article class="card expertise-card"><span class="num">04</span><h3>AI Product Development</h3><p>Design AI-enabled workflows and select practical integration patterns that support a real product objective.</p></article>
+          <article class="card expertise-card"><span class="num">05</span><h3>Performance Optimization</h3><p>Find high-impact bottlenecks across application code, search, APIs, infrastructure, and database access.</p></article>
+          <article class="card expertise-card"><span class="num">06</span><h3>Engineering Leadership</h3><p>Improve delivery discipline, architecture decisions, clean-code practices, and team capability.</p></article>
+        </div>
+        <div class="card stack">
+          <h3>Technology foundation</h3>
+          <div class="stack-list"><span>Java</span><span>Python</span><span>PHP</span><span>JavaScript</span><span>TypeScript</span><span>Kotlin</span><span>Django</span><span>Laravel</span><span>Node.js</span><span>React</span><span>Vue.js</span><span>PostgreSQL</span><span>MySQL</span><span>Elasticsearch</span><span>Redis</span><span>Docker</span><span>Linux</span><span>CI/CD</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Recent leadership</span><h2 class="section-title" id="journey-title">Hands-on across product stages.</h2></div>
+          <p class="section-intro">From established platforms to early-stage products, my role consistently connects strategy with delivery.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><span class="date">2026 - Present</span><h3>Petruck.id</h3><p>Technology Consultant</p></article>
+          <article class="timeline-item"><span class="date">2025 - Present</span><h3>RVARE</h3><p>Chief Technology Officer</p></article>
+          <article class="timeline-item"><span class="date">2024 - 2025</span><h3>BoringAI.io</h3><p>Lead Backend Developer</p></article>
+          <article class="timeline-item"><span class="date">2022 - 2024</span><h3>Mebiso</h3><p>Chief Technology Officer</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap cta-box">
+        <div><h2>Let's turn a complex technology problem into a clear next move.</h2><p>Based in Malang, Indonesia. Available for architecture consultation, product advisory, and fractional technology leadership.</p></div>
+        <div class="cta-actions">
+          <a class="button button-primary" href="mailto:hherdianto@gmail.com">hherdianto@gmail.com</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/hherdianto/" rel="noreferrer">Connect on LinkedIn</a>
+          <a class="button button-secondary" href="https://github.com/hherdianto" rel="noreferrer">View GitHub profile</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>&copy; 2026 Herry Herdianto. Built as a focused record of technology leadership and product work.</span>
+      <div class="footer-links"><a href="mailto:hherdianto@gmail.com">Email</a><a href="https://github.com/hherdianto" rel="noreferrer">GitHub</a><a href="#top">Back to top</a></div>
+    </div>
+  </footer>
+</body>
 </html>
